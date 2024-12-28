@@ -22,10 +22,11 @@
 	SOFTWARE.
 */
 
-package flags
+package flags_test
 
 import (
 	"github.com/stretchr/testify/assert"
+	"github.com/walterdejong/flags"
 	"testing"
 )
 
@@ -42,7 +43,7 @@ func TestParse(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog", "-vvv", "--num=-1", "-u", "42", "--file", "hello", "foo", "bar", "-q"}
 
-	args, err := Parse(argv, &opts)
+	args, err := flags.Parse(argv, &opts)
 	if err != nil {
 		t.Errorf("Parse() error: %q", err)
 	}
@@ -60,7 +61,7 @@ func TestParseEmpty(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog"}
 
-	args, err := Parse(argv, &opts)
+	args, err := flags.Parse(argv, &opts)
 	if err != nil {
 		t.Errorf("Parse() error: %q", err)
 	}
@@ -80,7 +81,7 @@ func TestParseUnknownOption(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog", "-p"}
 
-	_, err := Parse(argv, &opts)
+	_, err := flags.Parse(argv, &opts)
 	if err == nil {
 		t.Fail()
 	}
@@ -92,7 +93,7 @@ func TestParseUnknownLongOption(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog", "--foo"}
 
-	_, err := Parse(argv, &opts)
+	_, err := flags.Parse(argv, &opts)
 	if err == nil {
 		t.Fail()
 	}
@@ -104,7 +105,7 @@ func TestParseRepeatBool(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog", "-qqqq"}
 
-	_, err := Parse(argv, &opts)
+	_, err := flags.Parse(argv, &opts)
 	if err != nil {
 		t.Fail()
 	}
@@ -116,7 +117,7 @@ func TestParseRepeatOptArg(t *testing.T) {
 	opts := testOptions{}
 	argv := []string{"prog", "-n", "1", "--num=2"}
 
-	_, err := Parse(argv, &opts)
+	_, err := flags.Parse(argv, &opts)
 	if err == nil {
 		t.Fail()
 	}
