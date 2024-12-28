@@ -53,7 +53,7 @@ func TestParse(t *testing.T) {
 	assert.Equal(t, opts.Num, -1)
 	assert.Equal(t, opts.Unsigned, uint(0x2a))
 	assert.Equal(t, opts.File, "hello")
-	assert.Equal(t, args, []string{"foo", "bar"});
+	assert.Equal(t, args, []string{"foo", "bar"})
 }
 
 func TestParseEmpty(t *testing.T) {
@@ -71,7 +71,7 @@ func TestParseEmpty(t *testing.T) {
 	assert.Equal(t, opts.Num, 0)
 	assert.Equal(t, opts.Unsigned, uint(0))
 	assert.Equal(t, opts.File, "")
-	assert.Equal(t, args, []string{});
+	assert.Equal(t, args, []string{})
 }
 
 func TestParseUnknownOption(t *testing.T) {
