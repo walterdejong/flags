@@ -1,3 +1,7 @@
+/*
+	example program for `flags` module
+*/
+
 package main
 
 import (
@@ -7,14 +11,17 @@ import (
 )
 
 type Options struct {
-	Help    bool   `flags:"-h, --help"`
-	Verbose int    `flags:"-v, --verbose    be more verbose"`
-	File    string `flags:"-f, --file=FILE  specify filename"`
+	Help     bool   `flags:"-h, --help"`
+	Quiet    bool   `flags:"-q, --quiet             suppress output"`
+	Verbose  int    `flags:"-v, --verbose           be more verbose (may be given multiple times)"`
+	Num      int    `flags:"-n, --num=NUMBER        specify number"`
+	Unsigned uint   `flags:"-u, --unsigned=NUMBER   specify number >= 0"`
+	File     string `flags:"-f, --file=FILE         specify filename"`
 }
 
 func main() {
 	if len(os.Args) <= 1 {
-		fmt.Println("usage: example [-v] [-f FILE] [args ...]")
+		fmt.Println("usage: example [options] [args ...]")
 		os.Exit(1)
 	}
 
@@ -29,7 +36,7 @@ func main() {
 	fmt.Printf("args == %#v\n", args)
 
 	if opts.Help {
-		fmt.Println("usage: example [-v] [-f FILE] [args ...]")
+		fmt.Println("usage: example [options] [args ...]")
 		flags.PrintHelp(&opts)
 		os.Exit(1)
 	}
