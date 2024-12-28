@@ -97,6 +97,6 @@ options to occur after arguments.
 
 ## Copyright and License
 
-Copyright 2024 by Walter de Jong <walter@heiho.net>
+Copyright (c) 2024 Walter de Jong <walter@heiho.net>
 
 This software is provided under terms described in the MIT license.
