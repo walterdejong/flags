@@ -22,7 +22,7 @@
 	SOFTWARE.
 */
 
-// Package flags provides a command-line arguments parser
+// Package flags provides a command-line arguments parser.
 package flags
 
 import (
@@ -54,11 +54,11 @@ var regexTag = regexp.MustCompile(`^(?:` +
 	`(?:(?P<long>--[a-zA-Z0-9][a-zA-Z0-9-]+)(?:=(?P<arg2>[^,\s]+))?)?` +
 	`(?:[,\s]+(?P<help>[^-\s].+)?)?$`)
 
-// Parse the given command-line arguments
-// Returns any remaining arguments, and err value
-// parameter `argv` is the command line, like `os.Args`
-// parameter `taggedStruct` must be a pointer to struct that contains
-// fields that are tagged with "flags"
+// Parse the given command-line arguments.
+// Returns any remaining arguments, and err value.
+// Parameter `argv` is the command line, like `os.Args`.
+// Parameter `taggedStruct` must be a pointer to struct that contains
+// fields that are tagged with "flags".
 // For example:
 //
 //	type Options struct {
@@ -332,10 +332,10 @@ func combineOptions(short string, long string) string {
 	return long
 }
 
-// PrintHelp prints long usage information
+// PrintHelp prints long usage information.
 // Note: this is a helper function that only prints the options;
 // it does not produce a short usage line, program description,
-// copyright line, and so on
+// copyright line, and so on.
 func PrintHelp(taggedStructP any) {
 	// make a list of defined options from the tagged struct
 	definedOptions := defineOptions(taggedStructP)
